@@ -1,4 +1,4 @@
-name: Build Android APK (SmartWebView)
+name: Build Android APK
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
       - name: Build Debug APK
         run: ./gradlew assembleDebug
 
-      - name: Upload APK Artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: SmartWebView-APK
