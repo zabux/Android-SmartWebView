@@ -33,11 +33,11 @@ def getSwvProperties() {
 def swvProps = getSwvProperties()
 
 android {
-	namespace swvProps.getProperty('build.application.id', 'mgks.os.swv')
+	namespace swvProps.getProperty('build.application.id', 'awy.my.id')
 	compileSdk swvProps.getProperty('build.sdk.compile', '36').toInteger()
 
 	defaultConfig {
-		applicationId swvProps.getProperty('build.application.id', 'mgks.os.swv')
+		applicationId swvProps.getProperty('build.application.id', 'awy.my.id')
 		minSdk swvProps.getProperty('build.sdk.min', '24').toInteger()
 		targetSdk swvProps.getProperty('build.sdk.compile', '36').toInteger()
 		versionCode swvProps.getProperty('build.version.code', '1').toInteger()
