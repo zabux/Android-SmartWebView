@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awy Admin Dashboard</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex overflow-hidden text-sm">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-900 text-white flex flex-col hidden md:flex h-full">
+        <div class="h-16 flex items-center justify-center font-bold text-xl border-b border-gray-700">
+            <i class="fas fa-rocket mr-2 text-blue-400"></i> Awy Admin
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a href="#" class="block px-4 py-2 bg-blue-600 rounded-md flex items-center">
+                <i class="fas fa-home w-6"></i> Dashboard
+            </a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-800 rounded-md flex items-center transition">
+                <i class="fas fa-network-wired w-6"></i> API Management
+            </a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-800 rounded-md flex items-center transition">
+                <i class="fas fa-cog w-6"></i> Settings
+            </a>
+        </nav>
+        <div class="p-4 border-t border-gray-700 text-xs text-center text-gray-400">
+            &copy; 2026 Awy Dashboard
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header -->
+        <header class="h-16 bg-white shadow flex items-center justify-between px-6 z-10">
+            <div class="flex items-center md:hidden">
+                <button class="text-gray-600 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <span class="ml-4 font-bold text-lg">Awy Admin</span>
+            </div>
+            <div class="hidden md:block text-gray-600 font-medium">
+                Overview & Control
+            </div>
+            <div class="flex items-center">
+                <div class="relative">
+                    <img src="https://ui-avatars.com/api/?name=Awy&background=0D8ABC&color=fff" alt="User Avatar" class="w-8 h-8 rounded-full">
+                    <div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-white rounded-full"></div>
+                </div>
+                <span class="ml-2 font-medium text-gray-700 hidden sm:block">Admin Awy</span>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4 md:p-6">
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow p-4 flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-xs font-semibold uppercase">Total APIs</p>
+                        <p class="text-2xl font-bold text-gray-800" id="stat-total">0</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
+                        <i class="fas fa-server"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4 flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-xs font-semibold uppercase">Active APIs</p>
+                        <p class="text-2xl font-bold text-green-600" id="stat-active">0</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-500">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4 flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-xs font-semibold uppercase">Stopped APIs</p>
+                        <p class="text-2xl font-bold text-red-600" id="stat-stopped">0</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-500">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4 flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-xs font-semibold uppercase">System Load</p>
+                        <p class="text-2xl font-bold text-yellow-600">14%</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-500">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- API List Table -->
+                <div class="lg:col-span-2 bg-white rounded-lg shadow flex flex-col">
+                    <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center bg-gray-50 rounded-t-lg">
+                        <h2 class="font-bold text-gray-700 text-lg">API Services</h2>
+                        <button onclick="document.getElementById('name-input').focus()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded text-xs font-medium transition shadow-sm">
+                            <i class="fas fa-plus mr-1"></i> Add New
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-white text-gray-500 text-xs uppercase border-b">
+                                    <th class="px-6 py-3 font-semibold">Service Name</th>
+                                    <th class="px-6 py-3 font-semibold">Endpoint</th>
+                                    <th class="px-6 py-3 font-semibold text-center">Status</th>
+                                    <th class="px-6 py-3 font-semibold text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="api-list" class="divide-y divide-gray-200 text-gray-700">
+                                <!-- API items will be inserted here via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Add API Form -->
+                <div class="bg-white rounded-lg shadow self-start">
+                    <div class="px-6 py-4 border-b border-gray-200 bg-gray-50 rounded-t-lg">
+                        <h2 class="font-bold text-gray-700 text-lg">Add Custom API</h2>
+                    </div>
+                    <form id="add-api-form" class="p-6 space-y-4">
+                        <div>
+                            <label class="block text-gray-700 text-xs font-bold mb-2" for="name-input">API Name</label>
+                            <input id="name-input" type="text" placeholder="e.g. User Auth API" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs font-bold mb-2" for="endpoint-input">Endpoint URL</label>
+                            <input id="endpoint-input" type="text" placeholder="e.g. https://api.awy.my.id/v1/auth" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm font-mono text-xs">
+                        </div>
+                        <div class="pt-2">
+                            <button type="submit" class="w-full bg-gray-800 hover:bg-gray-900 text-white font-bold py-2.5 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition text-sm">
+                                Register API
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // Dummy data
+        let apiData = [
+            { id: 1, name: 'Main Auth Service', endpoint: 'https://api.awy.my.id/auth', active: true },
+            { id: 2, name: 'Payment Gateway', endpoint: 'https://api.awy.my.id/payments', active: false },
+            { id: 3, name: 'User Management', endpoint: 'https://api.awy.my.id/users', active: true },
+            { id: 4, name: 'Notification Service', endpoint: 'https://api.awy.my.id/notify', active: true }
+        ];
+
+        let nextId = 5;
+
+        // DOM Elements
+        const apiListEl = document.getElementById('api-list');
+        const formEl = document.getElementById('add-api-form');
+        const statTotalEl = document.getElementById('stat-total');
+        const statActiveEl = document.getElementById('stat-active');
+        const statStoppedEl = document.getElementById('stat-stopped');
+
+        // Functions
+        function renderTable() {
+            apiListEl.innerHTML = '';
+            
+            let activeCount = 0;
+            
+            apiData.forEach(api => {
+                if (api.active) activeCount++;
+                
+                const statusBadge = api.active 
+                    ? `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"><span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>Online</span>`
+                    : `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"><span class="w-1.5 h-1.5 bg-red-500 rounded-full mr-1.5"></span>Offline</span>`;
+                
+                const actionBtn = api.active
+                    ? `<button onclick="toggleApi(${api.id})" class="text-red-600 hover:text-red-800 hover:bg-red-50 px-2 py-1 rounded text-xs font-semibold transition"><i class="fas fa-stop mr-1"></i> Stop</button>`
+                    : `<button onclick="toggleApi(${api.id})" class="text-green-600 hover:text-green-800 hover:bg-green-50 px-2 py-1 rounded text-xs font-semibold transition"><i class="fas fa-play mr-1"></i> Start</button>`;
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-50 transition";
+                tr.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-8 w-8 bg-gray-100 rounded flex items-center justify-center text-gray-500">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900">${api.name}</p>
+                                <p class="text-xs text-gray-400">ID: API-${api.id.toString().padStart(4, '0')}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <p class="text-xs text-gray-500 font-mono bg-gray-100 px-2 py-1 rounded inline-block truncate max-w-xs">${api.endpoint}</p>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                        ${statusBadge}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        ${actionBtn}
+                        <button onclick="deleteApi(${api.id})" class="text-gray-400 hover:text-red-500 ml-2 transition" title="Delete">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                `;
+                apiListEl.appendChild(tr);
+            });
+
+            // Update stats
+            statTotalEl.textContent = apiData.length;
+            statActiveEl.textContent = activeCount;
+            statStoppedEl.textContent = apiData.length - activeCount;
+        }
+
+        function toggleApi(id) {
+            const api = apiData.find(a => a.id === id);
+            if (api) {
+                // Simulate network delay
+                const originalActive = api.active;
+                const row = apiListEl.querySelector(`tr:nth-child(${apiData.indexOf(api) + 1})`);
+                if(row) row.style.opacity = '0.5';
+                
+                setTimeout(() => {
+                    api.active = !api.active;
+                    renderTable();
+                    
+                    // Show small toast (dummy)
+                    if (window.AndroidInterface && window.AndroidInterface.showToast) {
+                        window.AndroidInterface.showToast(`${api.name} is now ${api.active ? 'Online' : 'Offline'}`);
+                    }
+                }, 400);
+            }
+        }
+
+        function deleteApi(id) {
+            if(confirm("Are you sure you want to delete this API?")) {
+                apiData = apiData.filter(a => a.id !== id);
+                renderTable();
+            }
+        }
+
+        // Event Listeners
+        formEl.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name-input').value;
+            const endpoint = document.getElementById('endpoint-input').value;
+            
+            if (name && endpoint) {
+                // Add new API
+                apiData.push({
+                    id: nextId++,
+                    name: name,
+                    endpoint: endpoint,
+                    active: true // Auto start new APIs
+                });
+                
+                // Reset form
+                formEl.reset();
+                
+                // Re-render
+                renderTable();
+                
+                if (window.AndroidInterface && window.AndroidInterface.showToast) {
+                    window.AndroidInterface.showToast(`Successfully added ${name}`);
+                }
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTable();
+        });
+    </script>
+</body>
+</html>

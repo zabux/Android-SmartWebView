@@ -89,8 +89,8 @@
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="android.intent.category.BROWSABLE" />
 				<data android:scheme="https"
-					android:host="mgks.github.io"
-					android:pathPrefix="/Android-SmartWebView" />
+					android:host="awy.my.id"
+					android:pathPrefix="/" />
 			</intent-filter>
 			<intent-filter android:label="OpenURI">
 				<action android:name="OPEN_URI" />

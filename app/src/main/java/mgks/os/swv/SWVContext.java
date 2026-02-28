@@ -345,10 +345,11 @@ public class SWVContext {
     // The ASWV_DRAWER_MENU map should also be moved here if it's to be configured.
     // For now, keeping it as is.
     public static final Map<Integer, NavItem> ASWV_DRAWER_MENU = new HashMap<Integer, NavItem>() {{
-        put(R.id.nav_home, new NavItem(R.id.nav_home, "https://mgks.github.io/Android-SmartWebView/"));
-        put(R.id.nav_doc, new NavItem(R.id.nav_doc, "https://mgks.github.io/Android-SmartWebView/documentation/"));
-        put(R.id.nav_plugins, new NavItem(R.id.nav_plugins, "https://mgks.github.io/Android-SmartWebView/documentation/plugins/"));
-        put(R.id.nav_psg, new NavItem(R.id.nav_psg, "https://mgks.github.io/Android-SmartWebView/documentation/play-store-guide/"));
-        put(R.id.nav_support, new NavItem(R.id.nav_support, "mailto:hello@mgks.dev?subject=Help: Smart WebView"));
+        put(R.id.nav_home, new NavItem(R.id.nav_home, "file:///android_asset/web/dashboard.html#dashboard"));
+        put(R.id.nav_doc, new NavItem(R.id.nav_doc, "file:///android_asset/web/dashboard.html#queue"));
+        put(R.id.nav_plugins, new NavItem(R.id.nav_plugins, "file:///android_asset/web/dashboard.html#retry"));
+        put(R.id.nav_psg, new NavItem(R.id.nav_psg, "file:///android_asset/web/dashboard.html#monitoring"));
+        put(R.id.nav_settings, new NavItem(R.id.nav_settings, "file:///android_asset/web/dashboard.html#settings"));
+        put(R.id.nav_support, new NavItem(R.id.nav_support, "file:///android_asset/web/dashboard.html#about"));
     }};
 }

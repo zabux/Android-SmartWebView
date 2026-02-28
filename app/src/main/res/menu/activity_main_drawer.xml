@@ -7,23 +7,27 @@
 		<item
 			android:id="@+id/nav_home"
 			android:icon="@drawable/ic_home"
-			android:title="@string/home" />
+			android:title="@string/dashboard" />
 		<item
 			android:id="@+id/nav_doc"
 			android:icon="@drawable/ic_doc"
-			android:title="@string/documentation" />
+			android:title="@string/api_queue" />
 		<item
 			android:id="@+id/nav_plugins"
 			android:icon="@android:drawable/btn_star_big_on"
-			android:title="@string/plugins" />
+			android:title="@string/retry_center" />
 		<item
 			android:id="@+id/nav_psg"
-			android:icon="@drawable/googleg_standard_color_18"
-			android:title="@string/play_store_guide" />
+			android:icon="@drawable/ic_search"
+			android:title="@string/monitoring" />
+		<item
+			android:id="@+id/nav_settings"
+			android:icon="@drawable/ic_menu_manage"
+			android:title="@string/settings" />
 		<item
 			android:id="@+id/nav_support"
 			android:icon="@drawable/ic_help"
-			android:title="@string/need_help" />
+			android:title="@string/about_awy" />
 	</group>
 
 	<!--
